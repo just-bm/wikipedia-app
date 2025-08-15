@@ -14,7 +14,7 @@ export default function App(){
     setError("");
     setLoading(true);
     try{
-      const response = await fetch(`https://wikipedia-app.onrender.com/=${encodeURIComponent(query)}`);
+      const response = await fetch(`https://wikipedia-app.onrender.com/search?q=${encodeURIComponent(query)}`);
 
       const data = await response.json();
       setResults(data);
