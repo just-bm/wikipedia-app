@@ -6,7 +6,7 @@ import wikipedia
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/", methods=["GET"])
+@app.route("/search", methods=["GET"])
 def search_wiki():
     query = request.args.get("q", "")
     if not query:
