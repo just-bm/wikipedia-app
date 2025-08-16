@@ -20,9 +20,10 @@ def search_wiki():
         try:
             summary = wikipedia.summary(title, sentences = 2)
             output.append({"title": title, "summary": summary, "url": wikipedia.page(title).url})
-        except e:
-            print(e)
-            continue
+        except wikipedia.exceptions.DisambiguationError as e:
+            output.append({"title": title, "summary": "Disambiguation Error"})
+        except wikipedia.exceptions.PageError as e:
+            output.append({"title": title, "summary": "Page Error"})
     
     return jsonify(output)
 
